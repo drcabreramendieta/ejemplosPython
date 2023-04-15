@@ -1,11 +1,11 @@
 from paho.mqtt import client as cliente_mqtt
 import time
 
-broker = '172.28.127.134'
+broker = '127.0.0.1'
 puerto = 1883
 tema = "tema/test"
 
-cliente = cliente_mqtt.Client()
+cliente = cliente_mqtt.Client("SE2")
 
 def conectado(cliente, datos, flags, rc):
     print("Ingresa")
@@ -16,8 +16,12 @@ def conectado(cliente, datos, flags, rc):
 
 cliente.on_connect = conectado
 cliente.connect(broker,puerto)
-cliente.loop_start()
 
-cliente.publish(tema,"Prueba SE1v2")
-cliente.disconnect()
-time.sleep(1)
+cliente.subscribe(tema)
+
+def mensaje(cliente,datos,msg):
+    print(msg.payload.decode())
+
+cliente.on_message = mensaje
+
+cliente.loop_forever()
