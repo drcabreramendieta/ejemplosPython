@@ -18,5 +18,5 @@ cliente.on_connect = conectado
 cliente.connect(broker,puerto)
 cliente.loop_start()
 
-cliente.publish("Prueba SE1")
+cliente.publish(tema,"Prueba SE1")
 time.sleep(1)
