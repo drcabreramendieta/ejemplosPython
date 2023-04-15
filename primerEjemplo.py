@@ -6,8 +6,10 @@ a = 12
 if a <= 15:
     print("a es menor o igual a 15")
     print("a es ", a)
+elif 15<a<=30:
+    print("a está entre 15 y 30")
 else:
-    print("a es mayor que 15")
+    print("a es mayor que 30")
 
 while a <= 15:
     print("Dentro del bucle a es ", a)
