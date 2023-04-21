@@ -1,7 +1,10 @@
 from threading import Thread
+import time
 
 def hilo():
-    print("Se ejecuta el hilo...")
+    for i in range(100):
+        print(str(i)+": Se ejecuta el hilo...")
+        time.sleep(1)
 
 obj_hilo = Thread(target=hilo)
 obj_hilo.start() # Inicia el hilo
