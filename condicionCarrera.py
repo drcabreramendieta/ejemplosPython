@@ -4,12 +4,13 @@ from time import sleep
 def sumador(monto, repeticiones, lock):
     global contador
     for _ in range(repeticiones):
-        with lock:
-            tmp = contador
-            sleep(0)
-            tmp = tmp + monto
-            sleep(0)
-            contador = tmp
+        lock.acquire()
+        tmp = contador
+        sleep(0)
+        tmp = tmp + monto
+        sleep(0)
+        contador = tmp
+        lock.release()
 
 def restador(monto, repeticiones, lock):
     global contador
